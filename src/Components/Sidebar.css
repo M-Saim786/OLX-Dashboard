@@ -1,0 +1,117 @@
+* {
+  border: none !important;
+}
+.sidebar {
+  width: 17%;
+  height: 100vh;
+  background-color: #1f1f1f;
+  position: relative;
+  z-index: 1;
+  border-radius: 0 10px 10px 0px;
+  display: inline-block;
+}
+
+ul {
+  list-style: none;
+  margin-top: 0 !important;
+  padding: 10px 10px;
+  border-radius: 10px;
+  height: 100vh;
+  color: white;
+}
+
+li {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+li:first-child {
+  background-color: #1f51ff;
+  text-align: center;
+  font-weight: bolder;
+  font-size: 1.5rem;
+}
+#btn {
+  display: none;
+  width: 20%;
+  border-radius: 50%;
+  height: 17vh;
+  text-align: center;
+  margin: 10px 10px;
+  background-color: #1f51ff;
+}
+#btn span {
+  color: white;
+  font-size: 40px;
+}
+
+ul li:last-child {
+  position: relative;
+  top: 11.5rem;
+  background-color: #1f51ff;
+  border: none;
+  font-size: 20px;
+  padding: 10px 2rem;
+}
+.icons {
+  position: relative;
+  top: 6px;
+  font-size: 25px;
+  margin-right: 6px;
+}
+li:last-child:hover {
+  color: black;
+}
+#notification {
+  height: 8vh;
+}
+#notification span {
+  margin-left: 3rem;
+  color: #ffcf1f;
+}
+#notiNumber {
+  background: red;
+  border-radius: 50%;
+  width: 16%;
+  height: 4vh;
+  display: block;
+  text-align: center;
+  padding-top: 5px;
+  position: relative;
+  top: -35px;
+  left: 9rem;
+  font-size: 10px;
+}
+
+@media screen and (max-width: 350px) {
+  #btn {
+    display: block !important;
+  }
+
+  .sidebar {
+    display: none;
+    left: -100%;
+    width: 70%;
+    animation: showBar 400ms ease forwards;
+  }
+  @keyframes showBar {
+    to {
+      left: 0%;
+    }
+  }
+
+  li:first-child {
+    margin-top: 10px;
+  }
+  ul li:last-child {
+    top: 3.5rem;
+  }
+}
+.active {
+  display: inline-block !important;
+}
+.TopNav {
+  /* border: 1px solid red !important; */
+  width: 27.6rem;
+}
