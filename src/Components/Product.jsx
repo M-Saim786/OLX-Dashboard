@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import { getDownloadURL, ref as sRef, uploadBytes } from 'firebase/storage';
 import { db, storage } from '../Config/Firebase';
 import { push, ref, set } from 'firebase/database';
-// import './product.css'
+import './Product.css'
 
 function Product() {
 
@@ -15,9 +15,11 @@ function Product() {
   const [FeatureVal, setFeatureVal] = useState('')
   const [Category, setCategory] = useState('')
   const [IMGUrl, setIMGUrl] = useState('')
+  const [productDesc, setproductDesc] = useState('')
+  const [Address, setAddress] = useState('')
   const [UrlState, setUrlState] = useState(false)
 
-  let imgUrl =''
+  let imgUrl = ''
 
   const HandlePName = (e) => {
     setProductName(e.target.value)
@@ -51,7 +53,6 @@ function Product() {
         console.log(error)
       })
   }
-
   const HandleFeature = (e) => {
     setFeatureVal(e.target.value)
   }
@@ -59,28 +60,35 @@ function Product() {
     setCategory(e.target.value)
     // console.log(e.target.value)
   }
-  const AddPro = () => {
-    if (ProductName, pQuantity, PPrice,  Category !== ''||UrlState===true) {
-    //   alert("dara")
-    // }
-    // else{
-
-    
-    const dbref = ref(db, 'Product')
-    const key = push(dbref)
-    let date = new Date
-    date = `${date.getDate()} :  ${date.getUTCMonth()} : ${date.getFullYear()}`
-    console.log(date)
-    set((dbref, key), {
-      ProductName: ProductName,
-      Product_Price: PPrice,
-      Category: Category,
-      imgUrl: IMGUrl == '' ? imgUrl : IMGUrl,
-      Date: date,
-      Feature_Value: FeatureVal
-    })
+  const ProductDesc = (e) => {
+    setproductDesc(e.target.value)
   }
-}
+  const HandleAddress = (e) => {
+    setAddress(e.target.value)
+  }
+  const AddPro = () => {
+    if ((ProductName, pQuantity, PPrice, Category, productDesc, Address !== '') && (UrlState === true)) {
+
+      const dbref = ref(db, 'Product')
+      const key = push(dbref)
+      let date = new Date
+      date = `${date.getDate()}/${date.getUTCMonth()}/${date.getFullYear()}`
+      console.log(date)
+      set((dbref, key), {
+        ProductName: ProductName,
+        Product_Price: PPrice,
+        Category: Category,
+        imgUrl: IMGUrl == '' ? imgUrl : IMGUrl,
+        Date: date,
+        Feature_Value: FeatureVal,
+        Product_Desc: productDesc,
+        Product_Address: Address
+      })
+    }
+    else {
+      alert("Add Data Correctly")
+    }
+  }
 
   return (
     <>
@@ -99,7 +107,7 @@ function Product() {
 
               </td>
               <td>
-                <TextField id="outline-basic" label="Product Quantity" variant="outlined" className='Inputs' onChange={HandlePQuantity} />
+                <TextField id="outline-basic" label="Product Quantity" type='number' variant="outlined" className='Inputs' onChange={HandlePQuantity} />
 
               </td>
             </tr>
@@ -107,7 +115,7 @@ function Product() {
             <tr>
 
               <td>
-                <TextField id="outline-basic" label="Prodcut Price" variant="outlined" className='Inputs' onChange={HandlePPrice} />
+                <TextField id="outline-basic" label="Prodcut Price" variant="outlined" className='Inputs' type='number' onChange={HandlePPrice} />
 
               </td>
               <td>
@@ -117,8 +125,8 @@ function Product() {
             </tr>
 
             <tr>
-              <td >
-                <select name="" id="" onChange={handleCategory} >
+              <td  >
+                <select name="" id="" onChange={handleCategory}  >
                   <option value="" selected disabled>Category</option>
                   <option value='Bikes' >Bikes</option>
                   <option value='Mobile Phones' >Mobile Phones</option>
@@ -132,11 +140,27 @@ function Product() {
 
               </td>
               <td>
-                <TextField id="outline-basic" label="Feature Value Optional " variant="outlined" className='Inputs' onChange={HandleFeature} />
+                <TextField id="outline-basic" label="Feature Value Optional " variant="outlined" type='number' className='Inputs' onChange={HandleFeature} />
 
               </td>
             </tr>
+            <tr>
+              <th>
+                <TextField
+                  id="outlined-multiline-static"
+                  label="Multiline"
+                  multiline
+                  rows={4}
+                  onChange={ProductDesc}
+                  placeholder="Product Details"
+                  className='textarea'
+                />
+              </th>
+              <th>
+                <TextField id="outline-basic" label="Your Address " variant="outlined" type='text' className='Inputs' onChange={HandleAddress} />
 
+              </th>
+            </tr>
           </table>
 
         </div>
