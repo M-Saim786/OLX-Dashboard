@@ -62,7 +62,15 @@ export default class Sidebar extends Component {
               <span class="material-icons-sharp icons">
                 settings
               </span>
-              Settings</li>
+              <Link to='/product'>
+              ADD PRODUCT
+              </Link>
+              </li>
+              <li>
+                <Link to='/ShowProduct'>
+                ShowProduct  
+                </Link>
+              </li>
             <li >
               <span class="material-icons-sharp icons">
                 keyboard_return

@@ -19,6 +19,8 @@ import Category from './Components/Category';
 import SubCategory from './Components/SubCategory';
 import Show_SubCate from './Components/Show_SubCate';
 import Show_Category from './Components/Show_Category';
+import Product from './Components/Product';
+import Show_Products from './Components/Show_Products';
 
 export default class App extends Component {
 
@@ -36,6 +38,8 @@ export default class App extends Component {
             <Route path='/subcategory' element={<SubCategory />} />
             <Route path='/showCategory' element={<Show_Category />} />
             <Route path='/showSubCategory' element={<Show_SubCate />} />
+            <Route path='/product' element={<Product />} />
+            <Route path='/ShowProduct' element={<Show_Products />} />
           </Routes>
           {/* <Dashboard /> */}
         </div>

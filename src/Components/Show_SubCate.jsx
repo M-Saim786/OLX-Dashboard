@@ -10,6 +10,7 @@ function Show_SubCate() {
         onValue(dbref, (snapShot) => {
             let data = snapShot.val()
             let subCategory = Object.values(data)
+            console.log(subCategory)
             setSubCate(subCategory)
             console.log(SubCate)
         })
@@ -28,8 +29,12 @@ function Show_SubCate() {
                     <th>
                         Sub Img
                     </th>
+                 
                     <th>
                         Sub Key
+                    </th>
+                    <th>
+                        TIME
                     </th>
                 </tr>
                 {
@@ -45,6 +50,9 @@ function Show_SubCate() {
                                     </th>
                                     <th>
                                         {subCategory.Sub_Category_Key}
+                                    </th>
+                                    <th>
+                                        {subCategory.time/3600}
                                     </th>
                                     <th>
                                         <button value={subCategory.Sub_Category_Key} onClick={getKey}>
