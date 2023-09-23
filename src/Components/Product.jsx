@@ -71,6 +71,7 @@ function Product() {
 
       const dbref = ref(db, 'Product')
       const key = push(dbref)
+      let randomKey = key.key
       let date = new Date
       date = `${date.getDate()}/${date.getUTCMonth()}/${date.getFullYear()}`
       console.log(date)
@@ -82,7 +83,8 @@ function Product() {
         Date: date,
         Feature_Value: FeatureVal,
         Product_Desc: productDesc,
-        Product_Address: Address
+        Product_Address: Address,
+        Product_Key:randomKey
       })
     }
     else {
